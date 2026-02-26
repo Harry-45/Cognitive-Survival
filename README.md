@@ -80,14 +80,6 @@ Key variables required in `.env`:
 - `DEBUG`: Set to `False` in production.
 - `DB_NAME`, `DB_USER`, `DB_PASSWORD`: Database credentials.
 - `VITE_API_URL`: Path to the backend API.
-
----
-
-## 📽️ Documentation & Artifacts
-The project includes several readiness artifacts located in `.gemini/antigravity/brain/`:
-- [Implementation Plan](.gemini/antigravity/brain/edc7c832-5b6f-4617-b1a6-ee1790f407b2/implementation_plan.md)
-- [Deployment Walkthrough](.gemini/antigravity/brain/edc7c832-5b6f-4617-b1a6-ee1790f407b2/walkthrough.md)
-
 ---
 
 ## 📄 License
