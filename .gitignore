@@ -1,0 +1,38 @@
+# --- ENVIRONMENT & SECRETS ---
+.env
+.env.local
+.env.*.local
+*.env
+!.env.example
+
+# --- PYTHON / DJANGO ---
+backend/__pycache__/
+backend/*.py[cod]
+backend/*$py.class
+backend/venv/
+venv/
+backend/db.sqlite3
+backend/staticfiles/
+backend/media/
+
+# --- NODE / REACT ---
+frontend/node_modules/
+node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/.eslintcache
+
+# --- IDE & SYSTEM ---
+.vscode/
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+thumbs.db
+desktop.ini
+
+# --- DOCKER ---
+.dockerignore
