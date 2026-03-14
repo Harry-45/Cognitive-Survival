@@ -37,51 +37,54 @@
 
 ### Prerequisites
 - Docker & Docker Compose (Recommended)
-- Python 3.11+ (For local backend dev)
-- Node.js 20+ (For local frontend dev)
-- MySQL (For local database)
+- Python 3.11+
+- Node.js 20+
+- MySQL
 
-### 🐋 Deployment with Docker (Easiest)
-1.  **Clone the repository**:
-    ```bash
-    git clone https://github.com/Harry-45/Cognitive-Survival.git
-    cd cognitive-survival
-    ```
-2.  **Setup Environment Variables**:
-    - Copy `backend/.env.example` to `backend/.env`
-    - Copy `frontend/.env.example` to `frontend/.env`
-3.  **Launch the stack**:
-    ```bash
-    docker-compose up --build -d
-    ```
+### 🐋 Deployment with Docker
 
-### 💻 Local Development Setup
+```bash
+git clone https://github.com/Harry-45/Cognitive-Survival.git
+cd Cognitive-Survival
+docker-compose up --build -d
+```
 
-#### Backend
-1.  Navigate to `backend/`.
-2.  Create and activate a virtual environment.
-3.  Install dependencies: `pip install -r requirements.txt`.
-4.  Configure `.env` with your seasonal database credentials.
-5.  Run migrations: `python manage.py migrate`.
-6.  Start server: `python manage.py runserver`.
+---
 
-#### Frontend
-1.  Navigate to `frontend/`.
-2.  Install dependencies: `npm install`.
-3.  Configure `.env` with API URL (default: `http://localhost:8000/api/`).
-4.  Start dev server: `npm run dev`.
+## 💻 Local Development Setup
+
+### Backend
+
+```bash
+cd backend
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+```
+
+### Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
 ---
 
 ## 🔒 Environment Variables
 
-Key variables required in `.env`:
-- `SECRET_KEY`: Django security key.
-- `DEBUG`: Set to `False` in production.
-- `DB_NAME`, `DB_USER`, `DB_PASSWORD`: Database credentials.
-- `VITE_API_URL`: Path to the backend API.
+Required variables in `.env`:
+
+- `SECRET_KEY`
+- `DEBUG`
+- `DB_NAME`
+- `DB_USER`
+- `DB_PASSWORD`
+- `VITE_API_URL`
 
 ---
 
 ## 📄 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+
+This project is licensed under the MIT License.
