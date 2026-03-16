@@ -1,31 +1,65 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import AnoAI from './ui/animated-shader-background';
+import { motion } from 'framer-motion';
 
 const Hero = ({ onAction }) => {
+  const [glitchText, setGlitchText] = useState('COGNITIVE_SURVIVAL');
+  
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
-      {/* Background Glows */}
-      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-cyber-blue/20 rounded-full blur-[120px] animate-pulse-slow"></div>
-      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-cyber-purple/20 rounded-full blur-[120px] animate-pulse-slow"></div>
+      {/* Background Shader */}
+      <div className="absolute inset-0 z-0">
+        <AnoAI />
+      </div>
+      
+      {/* Overlay for readability */}
+      <div className="absolute inset-0 bg-cyber-bg/60 z-[1]" />
+
+      {/* Background Glows (Optional, kept for aesthetic layering) */}
+      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-cyber-blue/10 rounded-full blur-[120px] animate-pulse-slow z-[2]"></div>
+      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-cyber-purple/10 rounded-full blur-[120px] animate-pulse-slow z-[2]"></div>
 
       {/* Hero Content */}
       <div className="relative z-10 w-full max-w-7xl flex flex-col lg:flex-row items-center justify-between gap-12">
-        <div className="flex-1 text-center lg:text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyber-blue/10 border border-cyber-blue/30 mb-8">
+        <motion.div 
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="flex-1 text-center lg:text-left"
+        >
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyber-blue/10 border border-cyber-blue/30 mb-8"
+          >
             <span className="w-2 h-2 rounded-full bg-cyber-blue animate-pulse"></span>
             <span className="text-[10px] font-orbitron uppercase tracking-[0.2em] text-cyber-blue">System Status: Active</span>
-          </div>
+          </motion.div>
           
-          <h1 className="text-6xl md:text-8xl font-black mb-4 leading-tight">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-6xl md:text-8xl font-black mb-4 leading-tight glow-text"
+          >
             OUTTHINK<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyber-blue to-cyber-purple">THE MACHINE.</span>
-          </h1>
+          </motion.h1>
           
-          <p className="text-gray-400 text-lg md:text-xl max-w-xl mb-10 leading-relaxed font-light">
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8 }}
+            className="text-gray-400 text-lg md:text-xl max-w-xl mb-10 leading-relaxed font-light font-orbitron"
+          >
             A premium psychological strategy experience. Master your neural signatures to navigate a complex, adversarial digital psyche. Survival isn't physical—it's cognitive.
-          </p>
+          </motion.p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <button 
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => onAction('simulation')}
               className="glow-button px-8 py-4 rounded-lg font-orbitron text-sm font-bold flex items-center justify-center gap-2 group"
             >
@@ -33,13 +67,21 @@ const Hero = ({ onAction }) => {
               <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
-            </button>
-            <button className="px-8 py-4 rounded-lg font-orbitron text-sm font-bold border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
+            </motion.button>
+            <motion.button 
+              whileHover={{ backgroundColor: "rgba(255,255,255,0.15)" }}
+              className="px-8 py-4 rounded-lg font-orbitron text-sm font-bold border border-white/10 bg-white/5 transition-colors"
+            >
               WATCH TRAILER
-            </button>
+            </motion.button>
           </div>
           
-          <div className="flex gap-16 mt-16 pt-8 border-t border-white/5 justify-center lg:justify-start">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2 }}
+            className="flex gap-16 mt-16 pt-8 border-t border-white/5 justify-center lg:justify-start"
+          >
             <div>
               <div className="text-3xl font-orbitron font-bold">0.02ms</div>
               <div className="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Sync Latency</div>
@@ -48,18 +90,21 @@ const Hero = ({ onAction }) => {
               <div className="text-3xl font-orbitron font-bold">100%</div>
               <div className="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Cortex Integrity</div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Cyborg Visual Placeholder */}
-        <div className="flex-1 relative">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="flex-1 relative"
+        >
           <div className="relative w-[300px] h-[300px] md:w-[500px] md:h-[500px] glass-panel flex items-center justify-center overflow-hidden border-cyber-blue/20">
-             {/* We'll use a generated image here eventually, for now a placeholder aesthetic */}
              <div className="absolute inset-0 bg-gradient-to-t from-cyber-blue/20 to-transparent"></div>
              <div className="text-cyber-blue/50 text-center space-y-4">
                 <div className="w-16 h-16 border-t-2 border-l-2 border-cyber-blue mx-auto rounded-tl-xl opacity-20"></div>
                 <div className="font-orbitron text-[10px] tracking-[0.3em] uppercase">Neural Mapping In Progress...</div>
-                {/* Visual scan animation */}
                 <div className="absolute top-0 left-0 w-full h-[1px] bg-cyber-blue/50 animate-[scan_3s_linear_infinite]"></div>
              </div>
              
@@ -76,15 +121,19 @@ const Hero = ({ onAction }) => {
                 <div className="text-[8px] text-right text-cyber-blue font-bold">42%</div>
              </div>
              
-             <div className="absolute bottom-10 right-10 glass-panel p-3 border-cyber-purple/30 bg-cyber-purple/5">
+             <motion.div 
+                animate={{ y: [0, -5, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute bottom-10 right-10 glass-panel p-3 border-cyber-purple/30 bg-cyber-purple/5"
+             >
                 <div className="flex items-center gap-2 mb-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-cyber-purple"></span>
                     <span className="text-[8px] font-orbitron text-cyber-purple/80 uppercase tracking-widest">Ego Vulnerability</span>
                 </div>
                 <div className="text-[10px] text-cyber-purple font-bold tracking-widest">LOW_THREAT_DETECTED</div>
-             </div>
+             </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
       
       {/* Decorative Protocol Lines */}

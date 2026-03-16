@@ -5,22 +5,29 @@
 *.env
 !.env.example
 
-# --- PYTHON / DJANGO ---
-backend/__pycache__/
-backend/*.py[cod]
-backend/*$py.class
-backend/venv/
+# --- PYTHON ---
+**/__pycache__/
+**/*.py[cod]
+**/*$py.class
+**/.pytest_cache/
+**/.python-version
 venv/
-backend/db.sqlite3
-backend/staticfiles/
-backend/media/
+**/venv/
+.venv/
+**/db.sqlite3
+**/staticfiles/
+**/media/
 
-# --- NODE / REACT ---
-frontend/node_modules/
+# --- NODE / JAVASCRIPT ---
 node_modules/
-frontend/dist/
-frontend/dist-ssr/
-frontend/.eslintcache
+**/node_modules/
+dist/
+**/dist/
+**/dist-ssr/
+**/.eslintcache
+**/.next/
+**/.vite/
+**/coverage/
 
 # --- IDE & SYSTEM ---
 .vscode/
@@ -31,8 +38,14 @@ frontend/.eslintcache
 *.njsproj
 *.sln
 *.sw?
-thumbs.db
+[Tt]humbs.db
 desktop.ini
+*.session.sql
+.history/
 
 # --- DOCKER ---
 .dockerignore
+
+# --- LOGS ---
+*.log
+**/logs/
